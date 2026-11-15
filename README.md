@@ -51,7 +51,7 @@ The assignment includes:
 
 ## Files
 
-- `Statistics_Module_Assignment_SINGLE_FILE.ipynb` - Completed Statistics assignment
+- `Statistics_Module_Assignment_SINGLE_FILE (1).ipynb` - Completed Statistics assignment
 - `Dataset.csv` - Dataset used for the analysis
 
 ## Purpose
@@ -60,5 +60,4 @@ The purpose of this project is to understand and apply statistical concepts usin
 
 ## Author
 
-MCA Student# Statistics-Module-Assignment
-Statistics Module Assignment with dataset and analysis
+MCA Student
