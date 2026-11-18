@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pandas as pd
 
-DATA_PATH = Path(__file__).parent / "Dataset.csv"
+DATA_PATH = Path(__file__).resolve().parents[1] / "Dataset.csv"
 EXPECTED_COLUMNS = [
     "PID", "Blue", "Wi_Fi", "Tch_Scr", "Ext_Mem", "Px_h", "Px_w",
     "Scr_h", "Scr_w", "PC", "FC", "Int_Mem", "Bty_Pwr", "RAM",
