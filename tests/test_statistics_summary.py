@@ -47,3 +47,12 @@ def test_summary_does_not_mutate_source():
     original = frame.copy(deep=True)
     descriptive_statistics(frame)
     pd.testing.assert_frame_equal(frame, original)
+
+
+@pytest.mark.parametrize("value", [True, False])
+def test_validator_rejects_boolean_numeric_measurements(value):
+    frame = load_data()
+    frame["RAM"] = frame["RAM"].astype(object)
+    frame.loc[0, "RAM"] = value
+    with pytest.raises(ValueError, match="must not contain boolean values"):
+        validate_phone_data(frame)
