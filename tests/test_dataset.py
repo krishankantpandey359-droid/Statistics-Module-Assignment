@@ -1,4 +1,5 @@
 from pathlib import Path
+import sys
 
 import numpy as np
 import pandas as pd
@@ -10,7 +11,9 @@ from src.statistics_summary import (
     validate_phone_data,
 )
 
-DATA_PATH = Path(__file__).resolve().parents[1] / "Dataset.csv"
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+DATA_PATH = ROOT / "Dataset.csv"
 EXPECTED_COLUMNS = [
     "PID", "Blue", "Wi_Fi", "Tch_Scr", "Ext_Mem", "Px_h", "Px_w",
     "Scr_h", "Scr_w", "PC", "FC", "Int_Mem", "Bty_Pwr", "RAM",
