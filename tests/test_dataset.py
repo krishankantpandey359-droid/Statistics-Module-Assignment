@@ -5,14 +5,15 @@ import numpy as np
 import pandas as pd
 import pytest
 
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
 from src.statistics_summary import (
     descriptive_statistics,
     price_rank_correlations,
     validate_phone_data,
 )
 
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
 DATA_PATH = ROOT / "Dataset.csv"
 EXPECTED_COLUMNS = [
     "PID", "Blue", "Wi_Fi", "Tch_Scr", "Ext_Mem", "Px_h", "Px_w",
