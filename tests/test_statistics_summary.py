@@ -47,3 +47,11 @@ def test_summary_does_not_mutate_source():
     original = frame.copy(deep=True)
     descriptive_statistics(frame)
     pd.testing.assert_frame_equal(frame, original)
+
+
+def test_validator_rejects_ids_that_duplicate_after_whitespace_normalization():
+    frame = load_data()
+    frame.loc[0, "PID"] = "  " + str(frame.loc[0, "PID"]) + "  "
+    frame.loc[1, "PID"] = str(frame.loc[0, "PID"]).strip()
+    with pytest.raises(ValueError, match="after whitespace normalization"):
+        validate_phone_data(frame)

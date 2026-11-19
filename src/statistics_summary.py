@@ -23,10 +23,11 @@ def validate_phone_data(frame: pd.DataFrame) -> pd.DataFrame:
         raise ValueError(f"Expected columns in this order: {EXPECTED_COLUMNS}")
     if frame.isna().any().any():
         raise ValueError("Dataset contains missing values.")
-    if frame["PID"].astype(str).str.strip().eq("").any():
+    normalized_ids = frame["PID"].astype(str).str.strip()
+    if normalized_ids.eq("").any():
         raise ValueError("Product identifiers must not be blank.")
-    if frame["PID"].duplicated().any():
-        raise ValueError("Product identifiers must be unique.")
+    if normalized_ids.duplicated().any():
+        raise ValueError("Product identifiers must be unique after whitespace normalization.")
 
     for column in BINARY_COLUMNS:
         values = set(frame[column].astype(str).str.strip().str.lower())
