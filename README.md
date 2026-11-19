@@ -1,63 +1,54 @@
 # Statistics Module Assignment
 
-## Overview
+A reproducible Python statistics assignment exploring a small mobile-phone specifications dataset.
 
-This repository contains my MCA Statistics Module Assignment based on a Telecommunication Industry dataset.
+## Project scope
 
-The assignment focuses on applying statistical methods and Python programming to study mobile phone data and understand different numerical features.
+The notebook completes nine learning tasks:
+
+1. Load and inspect the dataset.
+2. Convert Bluetooth, Wi-Fi, touchscreen and external-memory flags into binary values, then build a combined logical condition.
+3. Calculate total pixel count (pixel height × pixel width) and compare phones against the dataset median.
+4. Calculate screen diagonal from screen height and width, then apply the upper-quartile threshold.
+5. Explore primary and front camera resolutions using histograms, means and medians.
+6. Compare internal memory, battery capacity and RAM against their means.
+7. Explore phone depth and weight, using medians to identify thinner and lighter records.
+8. Combine all six conditions and sort matching phones by listed price.
+9. Compare numerical-feature variability with standard-deviation-to-mean ratios.
 
 ## Dataset
 
-The dataset contains information about mobile phones, including:
+- File: `Dataset.csv`
+- Shape: 50 rows × 17 columns
+- Identifier: `PID`
+- Binary features: `Blue`, `Wi_Fi`, `Tch_Scr`, `Ext_Mem`
+- Measurements and listed price: pixel dimensions, screen dimensions, camera resolutions, internal memory, battery power, RAM, depth, weight and `Price`.
 
-- Bluetooth
-- Wi-Fi
-- Touch Screen
-- External Memory
-- Pixel Height and Width
-- Screen Height and Width
-- Internal Memory
-- Battery Power
-- Primary Camera
-- Front Camera
-- RAM
-- Depth
-- Weight
-- Price
+The notebook loads the repository CSV when it is present and checks it against an embedded fallback copy. This keeps the notebook usable in both a repository checkout and standalone Google Colab. The analysis stops with a clear error if the schema, identifiers, binary values or numeric measurements fail validation.
 
-## Tasks Covered
+## Run locally
 
-The assignment includes:
+Python 3.11 is recommended.
 
-1. Loading and studying the dataset
-2. Applying different conditions to filter mobile phones
-3. Calculating pixel area
-4. Calculating screen diagonal
-5. Analysing camera specifications
-6. Analysing internal memory, battery power and RAM
-7. Analysing depth and weight
-8. Filtering and sorting the final dataset
-9. Calculating mean and standard deviation of numerical features
+```bash
+python -m pip install pandas numpy matplotlib seaborn jupyter nbconvert nbformat pytest
+pytest -q
+jupyter nbconvert --to notebook --execute "Statistics_Module_Assignment_SINGLE_FILE (1).ipynb" --output executed_statistics.ipynb --ExecutePreprocessor.timeout=600
+```
 
-## Tools Used
+Open the notebook in Jupyter or upload it to Google Colab to explore the analysis interactively.
 
-- Python
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
-- Google Colab
-- Jupyter Notebook
+## Repository layout
 
-## Files
+- `Dataset.csv`: version-controlled dataset.
+- `Statistics_Module_Assignment_SINGLE_FILE (1).ipynb`: full analysis and visualisations.
+- `tests/test_dataset.py`: dataset schema, identifier, binary-value and numeric-integrity tests.
+- `.github/workflows/project-checks.yml`: automated notebook execution and validation.
 
-- `Statistics_Module_Assignment_SINGLE_FILE (1).ipynb` - Completed Statistics assignment
-- `Dataset.csv` - Dataset used for the analysis
+## Interpretation and limitations
 
-## Purpose
+This is a descriptive educational exercise on a small 50-row dataset. The repository does not document an independently verifiable data source, collection method, sampling frame or date. Do not treat the records as representative of the phone market, infer causal relationships, or use the listed prices as current market prices. The standard-deviation-to-mean ratio is a descriptive comparison and is not meaningful for every possible distribution or zero-mean feature.
 
-The purpose of this project is to understand and apply statistical concepts using a real-world style telecommunication dataset with Python.
+## Tools
 
-## Author
-
-MCA Student
+Python, pandas, NumPy, Matplotlib, Seaborn, Jupyter Notebook and Google Colab.
