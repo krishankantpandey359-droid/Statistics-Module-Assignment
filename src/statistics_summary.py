@@ -33,6 +33,16 @@ def validate_phone_data(frame: pd.DataFrame) -> pd.DataFrame:
         if not values <= {"yes", "no"}:
             raise ValueError(f"{column} must contain only yes/no values.")
 
+    boolean_measurements = [
+        column for column in MEASURE_COLUMNS
+        if frame[column].map(lambda value: isinstance(value, (bool, np.bool_))).any()
+    ]
+    if boolean_measurements:
+        raise ValueError(
+            "Numeric measurements must not contain boolean values: "
+            + ", ".join(boolean_measurements)
+        )
+
     numeric = frame[MEASURE_COLUMNS].apply(pd.to_numeric, errors="coerce")
     if numeric.isna().any().any():
         raise ValueError("Numeric measurements contain non-numeric values.")
