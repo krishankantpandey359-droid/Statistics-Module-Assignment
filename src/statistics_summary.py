@@ -58,14 +58,20 @@ def descriptive_statistics(frame: pd.DataFrame) -> pd.DataFrame:
     summary["q1"] = numeric.quantile(0.25)
     summary["q3"] = numeric.quantile(0.75)
     summary["iqr"] = summary["q3"] - summary["q1"]
-    summary["cv_pct"] = np.where(
+    summary["coefficient_of_variation"] = np.where(
         summary["mean"].ne(0),
-        summary["std"] / summary["mean"].abs() * 100,
+        summary["std"] / summary["mean"].abs(),
         np.nan,
     )
+    # Keep a percentage-form display column for the notebook while exposing
+    # the conventional unitless coefficient expected by the reusable API.
+    summary["cv_pct"] = summary["coefficient_of_variation"] * 100
     summary.index.name = "feature"
     return summary[
-        ["count", "mean", "median", "std", "min", "q1", "q3", "max", "iqr", "cv_pct"]
+        [
+            "count", "mean", "median", "std", "min", "q1", "q3", "max",
+            "iqr", "coefficient_of_variation", "cv_pct",
+        ]
     ].round(3)
 
 
