@@ -52,3 +52,16 @@ This is a descriptive educational exercise on a small 50-row dataset. The reposi
 ## Tools
 
 Python, pandas, NumPy, Matplotlib, Seaborn, Jupyter Notebook and Google Colab.
+
+
+## Reusable statistics module
+
+`src/statistics_summary.py` complements the assignment notebook with reusable functions:
+
+- `validate_phone_data(frame)`: validates the exact schema, unique product IDs, yes/no feature flags and finite positive numeric measurements.
+- `descriptive_statistics(frame)`: reports count, mean, median, standard deviation, quartiles, range, IQR and coefficient of variation.
+- `price_rank_correlations(frame)`: reports Spearman rank correlations between numeric specifications and the supplied `Price` field.
+
+The ID and binary flags are excluded from numeric measurement summaries. Correlations describe rank association in this sample only. They do not establish causation or current market-price relationships. The dataset remains a 50-row educational sample with undocumented provenance.
+
+The expanded test suite covers valid data, invalid values, duplicate IDs, summary completeness, bounded correlations and input non-mutation.
