@@ -79,6 +79,15 @@ def price_rank_correlations(frame: pd.DataFrame) -> pd.Series:
     """Return Spearman rank correlations of numeric features with listed price."""
     validate_phone_data(frame)
     numeric = frame[MEASURE_COLUMNS].apply(pd.to_numeric, errors="raise")
-    return numeric.corr(method="spearman")["Price"].drop("Price").sort_values(
-        key=lambda values: values.abs(), ascending=False
-    ).rename("spearman_rho_with_listed_price").round(3)
+    if numeric["Price"].nunique(dropna=False) < 2:
+        raise ValueError("Price must vary to calculate rank correlations.")
+    predictors = numeric.drop(columns="Price")
+    variable_predictors = predictors.columns[predictors.nunique(dropna=False) > 1]
+    if len(variable_predictors) == 0:
+        return pd.Series(dtype=float, name="spearman_rho_with_listed_price")
+    correlations = predictors[variable_predictors].corrwith(
+        numeric["Price"], method="spearman"
+    )
+    return correlations.sort_values(key=lambda values: values.abs(), ascending=False).rename(
+        "spearman_rho_with_listed_price"
+    ).round(3)
