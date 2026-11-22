@@ -31,7 +31,7 @@ The notebook loads the repository CSV when it is present and checks it against a
 Python 3.11 is recommended.
 
 ```bash
-python -m pip install pandas numpy matplotlib seaborn jupyter nbconvert nbformat pytest
+python -m pip install -r requirements.txt
 pytest -q
 jupyter nbconvert --to notebook --execute "Statistics_Module_Assignment_SINGLE_FILE (1).ipynb" --output executed_statistics.ipynb --ExecutePreprocessor.timeout=600
 ```
