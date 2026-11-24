@@ -65,3 +65,7 @@ Python, pandas, NumPy, Matplotlib, Seaborn, Jupyter Notebook and Google Colab.
 The ID and binary flags are excluded from numeric measurement summaries. Correlations describe rank association in this sample only. They do not establish causation or current market-price relationships. The dataset remains a 50-row educational sample with undocumented provenance.
 
 The expanded test suite covers valid data, invalid values, duplicate IDs, summary completeness, bounded correlations and input non-mutation.
+
+## Latest GitHub Actions validation
+
+Latest verified successful main-branch workflow run checked on 24 November 2026: [GitHub Actions run #45312213064](https://github.com/krishankantpandey359-droid/Statistics-Module-Assignment/actions/runs/45312213064). This run verifies the checks configured in this repository's workflow; it does not replace manual testing of features outside CI.
