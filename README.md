@@ -68,4 +68,4 @@ The expanded test suite covers valid data, invalid values, duplicate IDs, summar
 
 ## Latest GitHub Actions validation
 
-Latest verified successful main-branch workflow run checked on 24 November 2026: [GitHub Actions run #45312213064](https://github.com/krishankantpandey359-droid/Statistics-Module-Assignment/actions/runs/45312213064). This run verifies the checks configured in this repository's workflow; it does not replace manual testing of features outside CI.
+Latest verified successful main-branch workflow run checked on 24 November 2026: [GitHub Actions run #45313830944](https://github.com/krishankantpandey359-droid/Statistics-Module-Assignment/actions/runs/45313830944). This run verifies the checks configured in this repository's workflow; it does not replace manual testing of features outside CI.
